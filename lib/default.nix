@@ -20,11 +20,12 @@ in
   # Usage: mkConfig { inherit pkgs; shell = "${pkgs.bash}/bin/bash"; plugins = [ pkgs.tmuxPlugins.nord ]; extra-config = "set -g history-limit 1000"; }
   #   result: /nix/store/<hash>-tmux.conf
   mkConfig =
-    { pkgs
-    , shell ? "${pkgs.zsh}/bin/zsh"
-    , terminal ? "screen-256color-bce"
-    , plugins ? [ ]
-    , extra-config ? ""
+    {
+      pkgs,
+      shell ? "${pkgs.bash}/bin/bash",
+      terminal ? "screen-256color-bce",
+      plugins ? [ ],
+      extra-config ? "",
     }:
     let
       is-package = pkgs.lib.types.package.check;

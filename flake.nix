@@ -16,7 +16,7 @@
       inherit inputs;
       src = ./.;
 
-      overlay-package-namespace = "plusultra";
+      snowfall.namespace = "ivecl7";
 
       alias.packages.default = "tmux";
     };
