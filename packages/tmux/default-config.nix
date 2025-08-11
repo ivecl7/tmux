@@ -1,4 +1,8 @@
-{ lib, pkgs }:
+{
+  lib,
+  namespace,
+  pkgs,
+}:
 
 let
   hr = text:
@@ -69,6 +73,6 @@ let
       vim-tmux-navigator
     ]);
 in
-lib.mkConfig {
+lib.${namespace}.mkConfig {
   inherit pkgs plugins extra-config;
 }

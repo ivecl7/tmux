@@ -1,7 +1,9 @@
-{ lib
-, pkgs
-, tmux-config ? import ./default-config.nix { inherit lib pkgs; }
-, ...
+{
+  lib,
+  pkgs,
+  namespace,
+  tmux-config ? import ./default-config.nix { inherit lib pkgs namespace; },
+  ...
 }:
 
 pkgs.tmux.overrideAttrs (oldAttrs: {
