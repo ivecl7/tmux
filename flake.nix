@@ -10,7 +10,8 @@
     };
   };
 
-  outputs = inputs:
+  outputs =
+    inputs:
     inputs.snowfall.mkFlake {
       inherit inputs;
       src = ./.;

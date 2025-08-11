@@ -5,30 +5,22 @@
 }:
 
 let
-  hr = text:
+  hr =
+    text:
     let
       parts = builtins.split "." text;
     in
-    builtins.foldl'
-      (text: part:
-        if builtins.isList part then
-          "${text}-"
-        else
-          text
-      )
-      ""
-      (builtins.tail parts);
+    builtins.foldl' (text: part: if builtins.isList part then "${text}-" else text) "" (
+      builtins.tail parts
+    );
 
   config-files = lib.snowfall.fs.get-files-recursive ./config;
-  extra-config = lib.concatMapStringsSep
-    "\n"
-    (file: ''
-      # ${file}
-      # ${hr file}
+  extra-config = lib.concatMapStringsSep "\n" (file: ''
+    # ${file}
+    # ${hr file}
 
-      ${builtins.readFile file}
-    '')
-    config-files;
+    ${builtins.readFile file}
+  '') config-files;
 
   # Extrakto with wl-clipboard patched in.
   extrakto = pkgs.tmuxPlugins.mkTmuxPlugin {
