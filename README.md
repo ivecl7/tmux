@@ -29,7 +29,7 @@ You can try this configuration out without committing to installing it on your s
 the following command.
 
 ```nix
-nix run github:jakehamilton/tmux
+nix run github:ivecl7/tmux
 ```
 
 ## Install
@@ -39,7 +39,7 @@ nix run github:jakehamilton/tmux
 You can install this package imperatively with the following command.
 
 ```nix
-nix profile install github:jakehamilton/tmux
+nix profile install github:ivecl7/tmux
 ```
 
 ### Nix Configuration
@@ -60,7 +60,7 @@ You can install this package by adding it as an input to your Nix flake.
 		};
 
 		tmux = {
-			url = "github:jakehamilton/tmux";
+			url = "github:ivecl7/tmux";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 	};
@@ -75,21 +75,21 @@ You can install this package by adding it as an input to your Nix flake.
 				tmux.overlay
 
 				# There is also a named overlay, though the output is the same.
-				tmux.overlays."nixpkgs/plusultra"
+				tmux.overlays."nixpkgs/ivecl7"
 			];
 		};
 }
 ```
 
 If you've added the overlay from this flake, then in your system configuration
-you can add the `plusultra.tmux` package.
+you can add the `ivecl7.tmux` package.
 
 ```nix
 { pkgs }:
 
 {
 	environment.systemPackages = with pkgs; [
-		plusultra.tmux
+		ivecl7.tmux
 	];
 }
 ```
@@ -134,7 +134,7 @@ following example for how to create your own derivation.
 	description = "My tmux flake";
 
 	inputs = {
-		nixpkgs.url = "github:nixos/nixpkgs/nixos-22.05";
+		nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
 		# Snowfall is not required, but will make configuration easier for you.
 		snowfall-lib = {
@@ -143,7 +143,7 @@ following example for how to create your own derivation.
 		};
 
 		tmux = {
-			url = "github:jakehamilton/tmux";
+			url = "github:ivecl7/tmux";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 	};
@@ -181,3 +181,6 @@ following example for how to create your own derivation.
 		};
 }
 ```
+
+## Thanks
+Special thanks to jakehamilton for the tmux template.
