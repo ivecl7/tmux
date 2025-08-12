@@ -47,3 +47,12 @@ setw -g clock-mode-style 24
 
 # Aggressively resize.
 setw -g aggressive-resize on
+
+# Copy mode vi.
+set-option -g mode-keys vi
+# keybindings
+bind-key -T copy-mode-vi v send-keys -X begin-selection
+bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle \; send -X begin-selection
+bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+# comment the preceding line and uncomment the following to yank to X clipboard
+# bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xclip -in -selection clipboard"
