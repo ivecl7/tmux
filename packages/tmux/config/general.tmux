@@ -23,6 +23,8 @@ set-option -ga terminal-overrides ",xterm-256color:Tc"
 set-option -g status-left-length 100
 set-option -g status-right-length 100
 
+set-option -g default-shell $HOME/.nix-profile/bin/zsh
+
 # One of the plugins binds C-l, make sure we have accces to it.
 unbind C-l
 bind -n C-l send-keys C-l
